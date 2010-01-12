@@ -1,8 +1,8 @@
 " Vim syntax file
 " Language:	Remind
 " Maintainer:	Davide Alberani <alberanid@libero.it>
-" Last Change:	25 Jun 2007
-" Version:	0.4
+" Last Change:	18 Sep 2009
+" Version:	0.5
 " URL:		http://erlug.linux.it/~da/vim/syntax/remind.vim
 "
 " remind is a sophisticated reminder service
@@ -15,7 +15,7 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-" shut case off
+" shut case off.
 syn case ignore
 
 syn keyword remindCommands	REM OMIT SET FSET UNSET
@@ -33,13 +33,13 @@ syn region remindString		start=+"+ end=+"+ skip=+\\\\\|\\"+ oneline
 syn match remindVar		"\$[_a-zA-Z][_a-zA-Z0-9]*"
 syn match remindSubst		"%[^ ]"
 syn match remindAdvanceNumber	"\(\*\|+\|-\|++\|--\)[0-9]\+"
-" XXX: divide separators used for dates from the ones used by times?
+" XXX: use different separators for dates and times?
 syn match remindDateSeparators	"[/:@\.-]" contained
 syn match remindTimes		"[0-9]\{1,2}[:\.][0-9]\{1,2}" contains=remindDateSeparators
-" TODO: why not match only valid dates? (ok, checking for 02/29 would be
-"       impossible, but at least check for valid months and times).
+" XXX: why not match only valid dates?  Ok, checking for 'Feb the 30' would
+"       be impossible, but at least check for valid months and times.
 syn match remindDates		"'[0-9]\{4}[/-][0-9]\{1,2}[/-][0-9]\{1,2}\(@[0-9]\{1,2}[:\.][0-9]\{1,2}\)\?'" contains=remindDateSeparators
-" This will match trailing whitespaces that seem to broke rem2ps.
+" This will match trailing whitespaces that seem to break rem2ps.
 " Courtesy of Michael Dunn.
 syn match remindWarning		display excludenl "\S\s\+$"ms=s+1
 
@@ -61,14 +61,14 @@ if version >= 508 || !exists("did_remind_syn_inits")
   HiLink remindRun		Function
   HiLink remindConditional	Conditional
   HiLink remindComment		Comment
-  HiLink remindDateSeparators	Comment
-  HiLink remindDates		String
   HiLink remindTimes		String
   HiLink remindString		String
   HiLink remindDebug		Debug
   HiLink remindVar		Identifier
   HiLink remindSubst		Constant
   HiLink remindAdvanceNumber	Number
+  HiLink remindDateSeparators	Comment
+  HiLink remindDates		String
   HiLink remindWarning		Error
 
   delcommand HiLink
