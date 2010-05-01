@@ -27,7 +27,7 @@ syn keyword remindSpecial	INCLUDE INC BANNER PUSH-OMIT-CONTEXT PUSH CLEAR-OMIT-C
 syn keyword remindRun		MSG MSF RUN CAL SATISFY SPECIAL PS PSFILE SHADE MOON
 syn keyword remindConditional	IF ELSE ENDIF IFTRIG
 syn keyword remindDebug		DEBUG DUMPVARS DUMP ERRMSG FLUSH PRESERVE
-syn match remindComment		"#.*$"
+syn match remindComment		"^\s*[#;].*$"
 syn region remindString		start=+'+ end=+'+ skip=+\\\\\|\\'+ oneline
 syn region remindString		start=+"+ end=+"+ skip=+\\\\\|\\"+ oneline
 syn match remindVar		"\$[_a-zA-Z][_a-zA-Z0-9]*"
